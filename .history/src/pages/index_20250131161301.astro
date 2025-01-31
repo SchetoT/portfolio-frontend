@@ -7,7 +7,9 @@ import Linkedin from "../icons/Linkedin.astro";
 import WhatsApp from "../icons/WhatsApp.astro";
 import Gmail from "../icons/Gmail.astro";
 
-const API_URL = import.meta.env.PUBLIC_API_URL;
+let projectsData = [];
+try {
+    const API_URL = import.meta.env.PUBLIC_API_URL;
 
 let projectsData = [];
 try {
@@ -15,6 +17,10 @@ try {
     projectsData = projectsResponse.data;
 } catch (error) {
     console.error('Error al consumir la API:', error);
+}
+projectsData = projectsResponse.data;
+} catch (error) {
+console.error('Error al consumir la API:', error);
 }
 ---
 

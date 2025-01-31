@@ -7,14 +7,12 @@ import Linkedin from "../icons/Linkedin.astro";
 import WhatsApp from "../icons/WhatsApp.astro";
 import Gmail from "../icons/Gmail.astro";
 
-const API_URL = import.meta.env.PUBLIC_API_URL;
-
 let projectsData = [];
 try {
-    const projectsResponse = await axios.get(`${API_URL}/api/projects`);
-    projectsData = projectsResponse.data;
+const projectsResponse = await axios.get('http://localhost:3000/api/projects');
+projectsData = projectsResponse.data;
 } catch (error) {
-    console.error('Error al consumir la API:', error);
+console.error('Error al consumir la API:', error);
 }
 ---
 
