@@ -1,0 +1,97 @@
+import axios from 'axios';
+import Layout from '../layouts/Layout.astro';
+import Social from '../icons/Social.astro';
+import GithubIcon from '../icons/GithubIcon.astro';
+import Linkedin from "../icons/Linkedin.astro";
+import WhatsApp from "../icons/WhatsApp.astro";
+import Gmail from "../icons/Gmail.astro";
+
+let projectsData = [];
+try {
+    const projectsResponse = await axios.get('http://localhost:3000/api/projects');
+    projectsData = projectsResponse.data;
+} catch (error) {
+    console.error('Error al consumir la API:', error);
+}
+
+<Layout title="Scheto Tomas - Portfolio">
+    <main class="flex flex-col min-h-screen">
+        <section class="w-full lg:w-[740px] mx-auto py-20 flex flex-col items-center">
+            <div class="flex items-center mb-10">
+                <img 
+                    class="rounded-full w-32 h-32 mr-8" 
+                    src="/src/assets/images/mi-foto.jpg"
+                    alt="Foto de Tomás Scheto" 
+                />
+                <div>
+                    <h1 class="text-white text-5xl font-bold">Hola! Soy Tomas Scheto.</h1>
+                    <h2 class="text-2xl mt-4">
+                        <span>Soy Desarrollador Web Full Stack y Tester QA.</span>
+                        <span class="block mt-2">Apasionado por el backend!</span>
+                        <span class="text-blue-200/90 block mt-2">Córdoba, Argentina</span>
+                    </h2>
+                </div>
+            </div>
+            
+            <nav class="flex gap-x-2 mt-4">
+                <Social href="https://github.com/SchetoT">
+                    <GithubIcon class="w-6 h-6" />
+                    GitHub
+                </Social>
+                <Social href="https://www.linkedin.com/in/schetotomas/">
+                    <Linkedin class="w-6 h-6" />
+                    LinkedIn
+                </Social>
+                <Social href="https://wa.me/+5493548515282">
+                    <WhatsApp class="w-6 h-6" />
+                    WhatsApp
+                </Social>
+                <Social href="mailto:schetot@gmail.com">
+                    <Gmail class="w-6 h-6" />
+                    Gmail
+                </Social>
+            </nav>
+
+            <div class="mt-10">
+                <a href="https://drive.google.com/file/d/157a7S_jM_-xFiZLKoc0zp-6HX3BDEiZt/view?usp=sharing" download>
+                    <button class="bg-gradient-to-r from-blue-400 to-blue-500 text-white font-semibold py-3 px-8 rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+                        Descargar CV
+                    </button>
+                </a>
+            </div>
+
+            <!-- Sección de Proyectos -->
+            <section class="max-w-screen-lg mx-auto px-4 py-12 mt-20">
+                <h1 class="text-5xl font-semibold text-center text-gray-900 dark:text-white">Experiencias en Proyectos</h1>
+                <p class="mt-4 text-center text-lg text-gray-700 dark:text-gray-300">
+                    Aquí puedes ver los proyectos en los que he trabajado. Cada uno refleja mi pasión y habilidad en el desarrollo web.
+                </p>
+
+                <!-- Lista de proyectos -->
+                <ul class="mt-8 space-y-6">
+                    {projectsData.map((project) => (
+                        <li key={project._id} class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition-all hover:scale-105 hover:shadow-lg">
+                            <!-- Título del proyecto -->
+                            <h2 class="text-2xl font-semibold text-gray-900 dark:text-white">{project.title}</h2>
+
+                            <!-- Descripción del proyecto -->
+                            <p class="mt-2 text-gray-700 dark:text-gray-400">{project.description}</p>
+
+                            <!-- Tecnologías utilizadas -->
+                            <p class="mt-2 text-gray-600 dark:text-gray-300">
+                                <strong>Tecnologías:</strong> {project.technologies.join(", ")}
+                            </p>
+
+                            <!-- Enlace al proyecto -->
+                            <a href={project.link} target="_blank" class="mt-4 inline-block text-blue-500 hover:text-blue-700 transition-colors">
+                                <button class="py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-500 transition-all">
+                                    Ver Proyecto
+                                </button>
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </section>
+        </section>
+    </main>
+</Layout>

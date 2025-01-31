@@ -1,0 +1,50 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scheto Tomas - Portfolio</title>
+</head>
+<body class="relative text-black dark:text-white">
+    <!-- Fondo radial grande -->
+    <div class="absolute inset-0 z-[-2] bg-gray-50 dark:bg-gray-950 
+        bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.9))] 
+        dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]">
+    </div>
+
+    <!-- Fondo radial pequeño en la parte inferior izquierda -->
+    <div class="absolute bottom-0 left-[-20%] right-0 top-[-10%] h-[500px] w-[500px] rounded-full 
+        bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]">
+    </div>
+
+    <!-- Fondo radial pequeño en la parte inferior derecha -->
+    <div class="absolute bottom-0 right-[-20%] top-[-10%] h-[500px] w-[500px] rounded-full 
+        bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]">
+    </div>
+
+    <!-- Contenedor principal con fondo oscuro -->
+    <div class="relative min-h-screen w-full bg-slate-950 z-0">
+        <Header />
+        <slot />
+        <footer />
+    </div>
+
+    <style is:global>
+    :root {
+        color-scheme: light dark;
+    }
+
+    html {
+        font-family: "Onest Variable", system-ui, sans-serif;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        color: rgba(17, 17, 17, 0.9);
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        overscroll-behavior: none;
+    }
+    </style>
+</body>
+</html>

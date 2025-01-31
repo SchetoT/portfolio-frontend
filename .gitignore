@@ -1,0 +1,45 @@
+# Node.js
+node_modules/
+
+# Dependencias de la construcción de Astro
+/.astro/
+
+# Archivos de compilación
+/dist/
+/build/
+
+# Archivos de entorno
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de configuración de editor
+.vscode/
+.idea/
+
+# Archivos generados por el IDE
+*.sublime-workspace
+*.sublime-project
+
+# Archivos de caché y temporales
+.cache/
+tmp/
+
+# Archivos de prueba
+test/
+
+# Archivos de configuración de Astro
+astro.config.mjs
+
+# Si estás usando TypeScript, puedes agregar:
+# *.tsbuildinfo
