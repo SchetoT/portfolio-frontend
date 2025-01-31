@@ -38,6 +38,8 @@ tmp/
 # Archivos de prueba
 test/
 
+# Archivos de configuración de Astro
+astro.config.mjs
 
 # Si estás usando TypeScript, puedes agregar:
 # *.tsbuildinfo
